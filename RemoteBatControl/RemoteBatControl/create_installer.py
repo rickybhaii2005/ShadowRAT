@@ -191,6 +191,8 @@ def create_spec_file(temp_dir, app_dir, console, icon):
 # Use the correct absolute path for server/server.py
     server_py_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../server/server.py')).replace('\\', '/')
     server_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../server')).replace('\\', '/')
+    # Use project root for templates, static, uploads
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
     spec_content = f'''
 # -*- mode: python ; coding: utf-8 -*-
 
@@ -201,9 +203,9 @@ a = Analysis(
     pathex=['{server_dir_path}'],
     binaries=[],
     datas=[
-        ('{os.path.join(app_dir, "templates").replace("\\", "/")}', 'templates'),
-        ('{os.path.join(app_dir, "static").replace("\\", "/")}', 'static'),
-        ('{os.path.join(app_dir, "uploads").replace("\\", "/")}', 'uploads'),
+        ('{os.path.join(project_root, "templates").replace("\\", "/")}', 'templates'),
+        ('{os.path.join(project_root, "static").replace("\\", "/")}', 'static'),
+        ('{os.path.join(project_root, "uploads").replace("\\", "/")}', 'uploads'),
     ],
     hiddenimports=[],
     hookspath=[],
