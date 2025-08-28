@@ -194,8 +194,8 @@ def create_spec_file(temp_dir, app_dir, console, icon):
 block_cipher = None
 
 a = Analysis(
-    ['{os.path.join(app_dir, "main.py").replace("\\", "/")}'],
-    pathex=['{app_dir.replace("\\", "/")}'],
+    ['{os.path.abspath(os.path.join(os.path.dirname(app_dir), "server/server.py")).replace("\\", "/")}'],
+    pathex=['{os.path.abspath(os.path.join(os.path.dirname(app_dir), "server")).replace("\\", "/")}'],
     binaries=[],
     datas=[
         ('{os.path.join(app_dir, "templates").replace("\\", "/")}', 'templates'),
