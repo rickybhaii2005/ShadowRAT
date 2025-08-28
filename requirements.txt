@@ -1,3 +1,0 @@
-# Basic requirements for ShadowRAT
-pynput
-opencv-python

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: remotebatcontrol
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=change_this_to_a_secure_random_string
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=StrongPassword123!
+      - LOG_LEVEL=INFO
+    networks:
+      - remotebatcontrol-network
+
+networks:
+  remotebatcontrol-network:
+    driver: bridge
+
+volumes:
+  data:
+  uploads:
+  logs:

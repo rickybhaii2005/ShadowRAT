@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12 text-center">
+        <h1 class="mb-2" style="color: #ff0033; text-shadow: 0 0 10px #ff0033; font-family: 'VT323', monospace;">
+            <i class="fas fa-satellite-dish me-3"></i>ShadowRAT Command Center <span class="cursor"></span>
+        </h1>
+        <p class="text-muted fs-5">Target System Control & Exploitation</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <span class="badge bg-danger fs-6" style="text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-wifi me-1"></i>Target Acquired</span>
+            <span class="badge bg-dark fs-6" style="border: 1px solid #ff0033; color: #ff0033;"><i class="fas fa-globe me-1"></i>Connection: Encrypted</span>
+            <span class="badge bg-dark fs-6" style="border: 1px solid #ff0033; color: #ff0033;"><i class="fas fa-mobile-alt me-1"></i>Remote Access Ready</span>
+            <button class="btn btn-outline-danger btn-sm" onclick="showMobileAccess()" style="border-color: #ff0033; color: #ff0033;">
+                <i class="fas fa-qrcode me-1"></i>Mobile Access
+            </button>
+        </div>
+    </div>
+</div>
+<!-- System Information -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card" style="border: 1px solid #333; background-color: #0a0a0a;">
+            <div class="card-header" style="background-color: #0a0a0a; border-bottom: 1px solid #ff0033;">
+                <h5 class="card-title mb-0" style="color: #ff0033; text-transform: uppercase; letter-spacing: 1px;">
+                    <i class="fas fa-crosshairs me-2"></i>Target System Information
+                </h5>
+            </div>
+            <div class="card-body" style="background-color: #0a0a0a;">
+                <table class="table table-borderless" style="color: #cccccc;">
+                    <tr>
+                        <td><strong style="color: #ff0033;">Hostname:</strong></td>
+                        <td style="color: #ff0033; font-family: 'Courier New', monospace;">{{ system_info.hostname }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ff0033;">System:</strong></td>
+                        <td style="color: #ff0033; font-family: 'Courier New', monospace;">{{ system_info.system }} {{ system_info.release }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ff0033;">Processor:</strong></td>
+                        <td style="color: #ff0033; font-family: 'Courier New', monospace;">{{ system_info.processor }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ff0033;">CPU Cores:</strong></td>
+                        <td style="color: #ff0033; font-family: 'Courier New', monospace;">{{ system_info.cpu_count }} physical, {{ system_info.cpu_count_logical }} logical</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ff0033;">Boot Time:</strong></td>
+                        <td style="color: #ff0033; font-family: 'Courier New', monospace;">{{ system_info.boot_time }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

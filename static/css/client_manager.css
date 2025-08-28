@@ -1,0 +1,52 @@
+/* Client Manager Styles */
+
+/* Client List Styles */
+.client-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid #28a745;
+}
+
+.client-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.client-offline {
+    border-left-color: #dc3545;
+    opacity: 0.8;
+}
+
+.client-status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-online {
+    background-color: #28a745;
+    box-shadow: 0 0 5px #28a745;
+}
+
+.status-offline {
+    background-color: #dc3545;
+}
+
+.client-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#clientDetails {
+    display: none;
+    margin-top: 30px;
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
+}
+
+.detail-header {
+    /* ...existing code... */
+}
+/* ...existing code... */
