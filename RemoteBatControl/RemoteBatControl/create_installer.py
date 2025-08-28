@@ -363,8 +363,13 @@ This tool provides administrative access to your system. Only use on trusted net
         subprocess.check_call(pyinstaller_cmd, cwd=temp_dir)
         
         # Copy the installer to the current directory
-        installer_exe = os.path.join(temp_dir, "dist", f"{output_name}.exe")
-        output_path = os.path.join(current_dir, f"{output_name}.exe")
+        # Detect platform and set installer filename accordingly
+        if sys.platform.startswith('win'):
+            installer_file = f"{output_name}.exe"
+        else:
+            installer_file = f"{output_name}"
+        installer_exe = os.path.join(temp_dir, "dist", installer_file)
+        output_path = os.path.join(current_dir, installer_file)
         shutil.copy2(installer_exe, output_path)
         
         print_colored(f"Installer created successfully: {output_path}", "GREEN")
