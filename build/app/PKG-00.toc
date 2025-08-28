@@ -560,7 +560,7 @@
   ('liblcms2-cc10e42f.so.2.0.17',
    'pillow.libs/liblcms2-cc10e42f.so.2.0.17',
    'SYMLINK')],
- 'libpython3.12.so.1.0',
+ 'libpython3.12.so',
  False,
  False,
  False,

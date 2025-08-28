@@ -1,4 +1,4 @@
-('/tmp/tmpd7gysomh/dist/RemoteBatControl',
+('/tmp/tmpsip4uj6b/dist/RemoteBatControl',
  True,
  False,
  False,
@@ -568,8 +568,8 @@
  [],
  False,
  False,
- 1756399367,
+ 1756400612,
  [('run',
    '/usr/local/python/3.12.1/lib/python3.12/site-packages/PyInstaller/bootloader/Linux-64bit-intel/run',
    'EXECUTABLE')],
- '/lib/x86_64-linux-gnu/libpython3.12.so.1.0')
+ '/lib/x86_64-linux-gnu/libpython3.12.so')
