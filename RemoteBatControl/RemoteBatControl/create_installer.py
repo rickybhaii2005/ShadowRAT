@@ -253,7 +253,16 @@ def create_installer(output_name="RemoteBatControl_Installer", console=False, ic
     
     # Get the current directory
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    app_dir = os.path.join(current_dir, "RemoteBatControl")
+    # Auto-detect the server/server.py path
+    possible_server_paths = [
+        os.path.abspath(os.path.join(current_dir, '../../server/server.py')),
+        os.path.abspath(os.path.join(current_dir, '../server/server.py')),
+        os.path.abspath(os.path.join(current_dir, 'server/server.py')),
+    ]
+    server_py_path = next((p for p in possible_server_paths if os.path.exists(p)), None)
+    if not server_py_path:
+        raise FileNotFoundError("Could not find server/server.py in any known location.")
+    app_dir = os.path.dirname(server_py_path)
     
     # Create a temporary directory for building
     temp_dir = tempfile.mkdtemp()
@@ -337,7 +346,7 @@ This tool provides administrative access to your system. Only use on trusted net
             sys.executable, "-m", "PyInstaller",
             "--onefile",
             "--name", output_name,
-            "--add-binary", f"{app_data_path};.",  # Add the app_data.bin file as a binary
+            f"--add-binary={app_data_path}:.",  # Add the app_data.bin file as a binary
         ]
         
         if not console:
