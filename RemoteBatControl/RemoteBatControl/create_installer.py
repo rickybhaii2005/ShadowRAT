@@ -188,14 +188,17 @@ def create_spec_file(temp_dir, app_dir, console, icon):
     # Format the icon parameter for the spec file
     icon_param = f"icon=r'{icon}'" if icon else "icon=None"
     
+# Use the correct absolute path for server/server.py
+    server_py_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../server/server.py')).replace('\\', '/')
+    server_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../server')).replace('\\', '/')
     spec_content = f'''
 # -*- mode: python ; coding: utf-8 -*-
 
 block_cipher = None
 
 a = Analysis(
-    ['{os.path.abspath(os.path.join(os.path.dirname(app_dir), "server/server.py")).replace("\\", "/")}'],
-    pathex=['{os.path.abspath(os.path.join(os.path.dirname(app_dir), "server")).replace("\\", "/")}'],
+    ['{server_py_path}'],
+    pathex=['{server_dir_path}'],
     binaries=[],
     datas=[
         ('{os.path.join(app_dir, "templates").replace("\\", "/")}', 'templates'),
